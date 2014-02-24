@@ -16,7 +16,8 @@
     },
     "require-dev": {
         "mockery/mockery": "0.9.0",
-        "orchestra/testbench": "2.1.*"
+        "orchestra/testbench": "2.1.*",
+        "way/laravel-test-helpers": "dev-master"
     },
     "repositories": [
         {
