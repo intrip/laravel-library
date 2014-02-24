@@ -1,0 +1,36 @@
+{
+    "name": "jacopo/library",
+    "description": "",
+    "version" : "0.1.0",
+    "license" : "proprietary",
+    "authors": [
+        {
+            "name": "jacopo",
+            "email": "jacopo@jacopobeschi.com",
+            "homepage": "http://www.jacopobeschi.com"
+        }
+    ],
+    "require": {
+        "php": ">=5.4.0",
+        "illuminate/support": "4.1.*"
+    },
+    "require-dev": {
+        "mockery/mockery": "0.9.0",
+        "orchestra/testbench": "2.1.*"
+    },
+    "repositories": [
+        {
+            "type": "vcs",
+            "url": "git://github.com/orchestral/phpseclib.git"
+        }
+    ],
+    "autoload": {
+        "psr-0": {
+            "Jacopo\\Library\\": "src/"
+        },
+        "psr-4": {
+            "Jacopo\\Library\\Tests\\" : "tests/"
+        }
+    },
+    "minimum-stability": "stable"
+}
