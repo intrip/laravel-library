@@ -11,14 +11,14 @@ use Event;
 class EloquentBaseRepository implements BaseRepositoryInterface
 {
     /**
-     * The name of the model: needs to be eloquent model
-     * @var String
+     * The model: needs to be eloquent model
+     * @var mixed
      */
-    protected $model_name;
+    protected $model;
 
-    public function __construct($model_name = null)
+    public function __construct($model)
     {
-        if($model_name) $this->model_name = $model_name;
+       $this->model = $model;
     }
 
     /**
@@ -28,8 +28,7 @@ class EloquentBaseRepository implements BaseRepositoryInterface
      */
     public function create(array $data)
     {
-        $model = $this->model_name;
-        return $model::create($data);
+        return $this->model->create($data);
     }
 
     /**
@@ -68,8 +67,7 @@ class EloquentBaseRepository implements BaseRepositoryInterface
      */
     public function find($id)
     {
-        $model = $this->model_name;
-        return $model::findOrFail($id);
+        return $this->model->findOrFail($id);
     }
 
     /**
@@ -78,7 +76,6 @@ class EloquentBaseRepository implements BaseRepositoryInterface
      */
     public function all()
     {
-        $model = $this->model_name;
-        return $model::all();
+        return $this->model->all();
     }
 } 
