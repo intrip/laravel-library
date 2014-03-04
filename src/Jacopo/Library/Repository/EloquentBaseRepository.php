@@ -5,6 +5,8 @@
  * @author jacopo beschi jacopo@jacopobeschi.com
  */
 
+use Illuminate\Database\Eloquent\ModelNotFoundException;
+use Jacopo\Library\Exceptions\NotFoundException;
 use Jacopo\Library\Repository\Interfaces\BaseRepositoryInterface;
 use Event;
 
@@ -36,7 +38,7 @@ class EloquentBaseRepository implements BaseRepositoryInterface
      * @param       id
      * @param array $data
      * @return mixed
-     * @throws \Illuminate\Database\Eloquent\ModelNotFoundException
+     * @throws \Jacopo\Library\Exceptions\NotFoundException
      */
     public function update($id, array $data)
     {
@@ -50,7 +52,7 @@ class EloquentBaseRepository implements BaseRepositoryInterface
      * Deletes a new object
      * @param $id
      * @return mixed
-     * @throws \Illuminate\Database\Eloquent\ModelNotFoundException
+     * @throws \Jacopo\Library\Exceptions\NotFoundException
      */
     public function delete($id)
     {
@@ -63,11 +65,18 @@ class EloquentBaseRepository implements BaseRepositoryInterface
      * Find a model by his id
      * @param $id
      * @return mixed
-     * @throws \Illuminate\Database\Eloquent\ModelNotFoundException
+     * @throws \Jacopo\Library\Exceptions\NotFoundException
      */
     public function find($id)
     {
-        return $this->model->findOrFail($id);
+        try
+        {
+            $this->model->findOrFail($id);
+        }
+        catch(ModelNotFoundException $e)
+        {
+            throw new NotFoundException;
+        }
     }
 
     /**
