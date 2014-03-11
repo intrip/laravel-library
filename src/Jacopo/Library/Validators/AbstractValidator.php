@@ -11,11 +11,17 @@ abstract class AbstractValidator implements ValidatorInterface
      * @var array
      */
     protected static $rules;
+    /**
+     * Custom validation messages
+     * @var array
+     */
+    protected static $messages;
 
     public function validate($input)
     {
         Event::fire('validating', [$input]);
-        $validator = V::make($input, static::$rules);
+        static::$messages = static::$messages ? static::$messages : [];
+        $validator = V::make($input, static::$rules, static::$messages);
 
         if($validator->fails())
         {

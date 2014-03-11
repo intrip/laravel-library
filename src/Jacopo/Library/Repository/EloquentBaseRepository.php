@@ -3,6 +3,7 @@
  * Class EloquentBaseRepository
  *
  * @author jacopo beschi jacopo@jacopobeschi.com
+ * @todo tests
  */
 
 use Illuminate\Database\Eloquent\ModelNotFoundException;
@@ -71,12 +72,14 @@ class EloquentBaseRepository implements BaseRepositoryInterface
     {
         try
         {
-            $this->model->findOrFail($id);
+            $model = $this->model->findOrFail($id);
         }
         catch(ModelNotFoundException $e)
         {
             throw new NotFoundException;
         }
+
+        return $model;
     }
 
     /**
