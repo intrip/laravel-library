@@ -37,8 +37,9 @@ class LibraryServiceProvider extends ServiceProvider {
 
     protected function bindFormModel()
     {
-        $this->app->bind('form_model', function ($app, $validator = null, $repository =null) {
-            return new FormModel($validator, $repository);
+        $this->app->bind('form_model', function ($app, $params) {
+            // validator, repository
+            return new FormModel($params[0], $params[1]);
         });
     }
 
