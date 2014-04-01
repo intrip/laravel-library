@@ -2,6 +2,7 @@
 
 use Illuminate\Support\ServiceProvider;
 use Jacopo\Library\Email\SwiftMailer;
+use Jacopo\Library\Form\FormModel;
 
 class LibraryServiceProvider extends ServiceProvider {
 
@@ -22,6 +23,7 @@ class LibraryServiceProvider extends ServiceProvider {
 		$this->package('jacopo/library');
 
         $this->bindMailer();
+        $this->bindFormModel();
 
     }
 
@@ -30,6 +32,13 @@ class LibraryServiceProvider extends ServiceProvider {
         $this->app->bind('jmailer', function ()
         {
             return new SwiftMailer;
+        });
+    }
+
+    protected function bindFormModel()
+    {
+        $this->app->bind('form_model', function ($app, $vaidator, $repository) {
+            return new FormModel($vaidator, $repository);
         });
     }
 
