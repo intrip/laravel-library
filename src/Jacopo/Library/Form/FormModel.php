@@ -128,22 +128,22 @@ class FormModel implements FormInterface{
             }
             catch(ModelNotFoundException $e)
             {
-                $this->errors = new MessageBag(array("model" => "Elemento non esistente"));
+                $this->errors = new MessageBag(array("model" => "Element does not exists."));
                 throw new NotFoundException();
             }
             catch(PermissionException $e)
             {
-                $this->errors = new MessageBag(array("model" => "Non è possibile cancellare questo elemento, verifica i tuoi permessi e che l'elemento non sia associato ad altri."));
+                $this->errors = new MessageBag(array("model" => "Cannot delete this item, please check that the element is not already associated to other element, in that case remove the association first."));
                 throw new PermissionException();
             }
         }
         else
         {
-            $this->errors = new MessageBag(array("model" => "Id non fornito"));
+            $this->errors = new MessageBag(array("model" => "Id not given"));
             throw new NotFoundException();
         }
     }
-    
+
     public function getErrors()
     {
         return $this->errors;
