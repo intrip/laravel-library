@@ -77,12 +77,12 @@ class FormModel implements FormInterface{
             }
             catch(ModelNotFoundException $e)
             {
-                $this->errors = new MessageBag(array("model" => "Elemento non trovato"));
+                $this->errors = new MessageBag(array("model" => "Element not found."));
                 throw new NotFoundException();
             }
             catch(PermissionException $e)
             {
-                $this->errors = new MessageBag(array("model" => "Non è possibile modificare questo elemento"));
+                $this->errors = new MessageBag(array("model" => "You don't have the permission to edit this item."));
                 throw new PermissionException();
             }
         }
