@@ -133,7 +133,7 @@ class FormModel implements FormInterface{
             }
             catch(PermissionException $e)
             {
-                $this->errors = new MessageBag(array("model" => "Cannot delete this item, please check that the element is not already associated to other element, in that case remove the association first."));
+                $this->errors = new MessageBag(array("model" => "Cannot delete this item, please check that the item is not already associated to any other element, in that case remove the association first."));
                 throw new PermissionException();
             }
         }
