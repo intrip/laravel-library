@@ -82,7 +82,7 @@ class FormModel implements FormInterface{
             }
             catch(PermissionException $e)
             {
-                $this->errors = new MessageBag(array("model" => "You don't have the permission to edit this item."));
+                $this->errors = new MessageBag(array("model" => "You don't have the permission to edit this item. Does the item is associated to other elements? if so delete the associations first."));
                 throw new PermissionException();
             }
         }
