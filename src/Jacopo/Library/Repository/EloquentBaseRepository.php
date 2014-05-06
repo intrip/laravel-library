@@ -3,7 +3,6 @@
  * Class EloquentBaseRepository
  *
  * @author jacopo beschi jacopo@jacopobeschi.com
- * @todo tests
  */
 
 use Illuminate\Database\Eloquent\ModelNotFoundException;
@@ -21,7 +20,7 @@ class EloquentBaseRepository implements BaseRepositoryInterface
 
     public function __construct($model)
     {
-       $this->model = $model;
+        $this->model = $model;
     }
 
     /**
@@ -98,4 +97,13 @@ class EloquentBaseRepository implements BaseRepositoryInterface
     {
         return $this->model;
     }
-} 
+
+    /**
+     * @param mixed $model
+     */
+    public function setModel($model)
+    {
+        $this->model = $model;
+    }
+
+}
