@@ -37,4 +37,13 @@ abstract class AbstractValidator implements ValidatorInterface
     {
         return $this->errors;
     }
+
+    /**
+     * @return array
+     */
+    public static function getRules()
+    {
+        return self::$rules;
+    }
+
 }
