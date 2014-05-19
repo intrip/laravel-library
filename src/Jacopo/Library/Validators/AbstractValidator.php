@@ -43,7 +43,7 @@ abstract class AbstractValidator implements ValidatorInterface
      */
     public static function getRules()
     {
-        return self::$rules;
+        return static::$rules;
     }
 
 }
