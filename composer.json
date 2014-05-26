@@ -1,5 +1,5 @@
 {
-    "name": "jacopo/library",
+    "name": "jacopo/laravel-library",
     "description": "General laravel library package",
     "license" : "MIT",
     "authors": [
