@@ -30,7 +30,7 @@ class FormModel implements FormInterface{
      * Name of the model id field
      * @var string
      */
-    protected $id_name = "id";
+    protected $id_field_name = "id";
     /**
      * Validaton errors
      * @var \Illuminate\Support\MessageBag
@@ -73,7 +73,7 @@ class FormModel implements FormInterface{
         {
             try
             {
-                $obj = $this->r->update($input[$this->id_name], $input);
+                $obj = $this->r->update($input[$this->id_field_name], $input);
             }
             catch(ModelNotFoundException $e)
             {
@@ -109,7 +109,7 @@ class FormModel implements FormInterface{
      */
     protected function isUpdate($input)
     {
-        return (isset($input[$this->id_name]) && ! empty($input[$this->id_name]) );
+        return (isset($input[$this->id_field_name]) && ! empty($input[$this->id_field_name]) );
     }
 
     /**
@@ -120,11 +120,11 @@ class FormModel implements FormInterface{
      */
     public function delete(array $input)
     {
-        if(isset($input[$this->id_name]) && ! empty($input[$this->id_name]))
+        if(isset($input[$this->id_field_name]) && ! empty($input[$this->id_field_name]))
         {
             try
             {
-                $this->r->delete($input[$this->id_name]);
+                $this->r->delete($input[$this->id_field_name]);
             }
             catch(ModelNotFoundException $e)
             {
@@ -149,4 +149,19 @@ class FormModel implements FormInterface{
         return $this->errors;
     }
 
-} 
+    /**
+     * @param string $id_name
+     */
+    public function setIdName($id_name)
+    {
+        $this->id_field_name = $id_name;
+    }
+
+    /**
+     * @return string
+     */
+    public function getIdName()
+    {
+        return $this->id_field_name;
+    }
+}
