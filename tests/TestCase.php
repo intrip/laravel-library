@@ -11,14 +11,14 @@ class TestCase extends \Orchestra\Testbench\TestCase  {
         parent::setUp();
     }
 
-    protected function getPackageProviders()
+    protected function getPackageProviders($app)
     {
         return [
             'Jacopo\Library\LibraryServiceProvider',
         ];
     }
 
-    protected function getPackageAliases()
+    protected function getPackageAliases($app)
     {
         return [
         ];
